@@ -9,6 +9,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxt/http": "^0.5.11",
     "nuxt": "^2.14.0"
   },
   "devDependencies": {}

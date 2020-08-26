@@ -1,15 +1,36 @@
 <template>
     <div class="single-image-page">
         <section class="image">
-            <h1 class="image-title">Title of the painting</h1>
+            <h1 class="image-title">{{ loadedImages.title }}</h1>
             <div class="image-details">
-                <div class="image-details">Size: ABC</div>
-                <div class="image-details">Frames: ABC</div>
-                <div class="image-details">Glass options: ABC</div>
+                <div class="image-details">{{ loadedImages.size }}</div>
+                <div class="image-details">{{ loadedImages.frames }}</div>
+                <div class="image-details">{{ loadedImages.glassOptions }}</div>
+                <div class="image-details">{{ loadedImages.thumbnail }}</div>
             </div>
         </section>
     </div>
 </template>
+
+<script>
+export default {
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        loadedImages: 
+          {
+            id: '1',
+            title: 'First image', 
+            size: '15x17cm',
+            frames:'Wood',
+            glassOptions: 'UV protecting glass',
+            thumbnail: 'https://images.pexels.com/photos/1183992/pexels-photo-1183992.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+          }
+      });
+    },1000);
+  }
+};
+</script>
 
 <style scoped>
 .single-image-page {

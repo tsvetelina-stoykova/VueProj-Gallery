@@ -1,22 +1,12 @@
 <template>
      <section class="image-list">
             <ImagePreview 
-                id="1"
+                v-for="image in images"
+                :key="image.id"
+                :id="image.id"
                 :is-admin ="isAdmin"
-                thumbnail="https://images.pexels.com/photos/1568607/pexels-photo-1568607.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
-                title="First Image"
-            />
-            <ImagePreview 
-                id="2"
-                :is-admin ="isAdmin"
-                thumbnail="https://images.pexels.com/photos/1616403/pexels-photo-1616403.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
-                title="Second Image"
-            />
-            <ImagePreview 
-                id="3"
-                :is-admin ="isAdmin"
-                thumbnail="https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
-                title="Third Image"
+                :thumbnail="image.thumbnail"
+                :title="image.title"
             />
         </section>
 </template>
@@ -32,7 +22,14 @@ export default {
         isAdmin: {
             type: Boolean,
             default: false
+        },
+        images: {
+            type: Array,
+            requred: true
         }
+    },
+    created(){
+       
     }
     
 }
