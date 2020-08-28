@@ -8,28 +8,26 @@
                 <div class="image-details">{{ loadedImages.glassOptions }}</div>
                 <div class="image-details">{{ loadedImages.thumbnail }}</div>
             </div>
+
+            <!-- {{postsData}} -->
         </section>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(null, {
-        loadedImages: 
-          {
-            id: '1',
-            title: 'First image', 
-            size: '15x17cm',
-            frames:'Wood',
-            glassOptions: 'UV protecting glass',
-            thumbnail: 'https://images.pexels.com/photos/1183992/pexels-photo-1183992.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-          }
-      });
-    },1000);
-  }
-};
+  asyncData(context) {
+    return axios.get('https://vuejs-http-ce521.firebaseio.com/images' + context.params.id + '.json')
+    .then(res => {
+      return {
+      loadedImages: res.data
+      }
+    })
+    .catch(e => context.error(e))
+}
+}
 </script>
 
 <style scoped>

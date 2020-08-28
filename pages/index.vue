@@ -1,6 +1,13 @@
 <template>
   <div class="home-page">
-    <ImageList  :images ="loadedImages" />
+    
+    
+      <section class="button-cta">
+          <!-- <button @click="$router.push('/admin/new-image/')">Next</button> -->
+          <button @click="$router.push('/admin/new-image/')">Next</button>
+          {{postsData}}
+      </section>
+   
   </div>
 </template>
 
@@ -10,6 +17,9 @@ import ImageList from "@/components/Images/ImageList"
 export default {
   components: {
     ImageList
+  },
+  created(){
+    this.$store.dispatch('getData');
   },
   // asyncData(context, callback) {
   //     setTimeout(() => {
@@ -32,6 +42,9 @@ export default {
     computed: {
       loadedImages(){
         return this.$store.getters.loadedImages
+      },
+      postsData(){
+        return this.$store.getters.postsData
       }
     }
   
@@ -69,5 +82,10 @@ export default {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+.button-cta {
+  text-align: center;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
 }
 </style>

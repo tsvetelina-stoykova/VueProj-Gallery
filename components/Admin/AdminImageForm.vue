@@ -44,7 +44,7 @@ export default {
     },
     methods: {
         onSave() {
-
+            this.$emit('submit', this.editedImage)
         },
 
         onCancel() {

@@ -7,23 +7,26 @@
 </template>
 
 <script>
+import axios from 'axios';
 import AdminImageForm from '@/components/Admin/AdminImageForm'
 export default {
     components: {
         AdminImageForm
     },
-    data() {
+    computed: {
+      loadedImages(){
+        return this.$store.getters.loadedImages
+      }
+    },
+asyncData() {
+    return axios.get('https://jsonplaceholder.typicode.com/users')
+    .then( res => {
         return {
-            loadedImage: {
-                title: 'Apple James Grieve',
-                size: 'Unframed: 31 x 23 cm',
-                frames: 'Frames come in white, black and oak.',
-                glassOptions: 'Standard glass',
-                thumbnailLink: 'https://images.pexels.com/photos/1616403/pexels-photo-1616403.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
-            }
+            loadedImage: res.data
         }
-    }
+    });
     
+}
 }
 </script>
 

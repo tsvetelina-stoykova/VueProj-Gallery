@@ -5,7 +5,8 @@
         </section>
         <section class="existing-images">
             <h1>Existing Paintings</h1>
-            <ImageList isAdmin />
+            <ImageList isAdmin
+            :images = "loadedImages" />
         </section>
     </div>
 </template>
@@ -15,6 +16,11 @@ import ImageList from '@/components/Images/ImageList'
 export default {
     components: {
         ImageList
+    },
+    computed: {
+      loadedImages() {
+        return this.$store.getters.loadedImages
+      }
     }
 }
 </script>

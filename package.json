@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nuxt/http": "^0.5.11",
+    "axios": "^0.20.0",
     "nuxt": "^2.14.0"
   },
   "devDependencies": {}
